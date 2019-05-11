@@ -4,7 +4,7 @@ import './App.css';
 
 function App(){
   
-  const [bill, setBill] = useState(0);
+  const [bill, setBill] = useState(0.0);
   const [tip, setTip] = useState(20);
   let [split, setSplit] = useState(1);
   const [tipAmt, setTipAmt] = useState(0);
@@ -17,7 +17,7 @@ function App(){
   function addWithTip(a,b) {
     console.log(a, b)
     let answer = (parseFloat(a) + parseFloat(b)) / split
-    return answer.toFixed(2);
+    return answer;
   }
 
   function add(a,b) {
@@ -42,23 +42,24 @@ function App(){
           <div className="module">
             <label>Amount in the Bill $</label>
             <input
-                type="number"
-                min="0"
-                className="input"
-                pattern="^\d+(?:\.\d{1,2})?$"
-                style={{fontSize: '20px'}}
-                value={bill}
-                onChange={e => setBill(parseInt(e.target.value))}
-            />
+              type="number"
+              min="0"
+              step="0.1"
+              precision="2"
+              className="input"
+              style={{fontSize: '20px'}}
+              value={bill}
+              onChange={e => setBill(parseFloat(e.target.value))}
+          />
           </div>
           
           <div className="module">
             <label>Pecent to Tip</label>
             <div>
-              <button className="tipBtn" style={{ backgroundColor: tip === 18 ? 'grey' : 'white',  color: tip === 18 ? 'white' : 'black'}} onClick={e => tipper(18)}>18% - ${(bill *(18/100)).toFixed(2)}</button>
-              <button className="tipBtn" style={{ backgroundColor: tip === 20 ? 'grey' : 'white',  color: tip === 20 ? 'white' : 'black'}} onClick={e => tipper(20)}>20% - ${(bill *(20/100)).toFixed(2)}</button>
-              <button className="tipBtn" style={{ backgroundColor: tip === 22 ? 'grey' : 'white',  color: tip === 22 ? 'white' : 'black'}} onClick={e => tipper(22)}>22% - ${(bill *(22/100)).toFixed(2)}</button>
-              <button className="tipBtn" style={{ backgroundColor: tip === 25 ? 'grey' : 'white',  color: tip === 25 ? 'white' : 'black'}} onClick={e => tipper(25)}>25% - ${(bill *(25/100)).toFixed(2)}</button>
+              <button className="tipBtn" style={{ backgroundColor: tip === 18 ? 'rgb(54,158,216)' : 'white',  color: tip === 18 ? 'white' : 'black'}} onClick={e => tipper(18)}>18% - ${(bill *(18/100)).toFixed(2)}</button>
+              <button className="tipBtn" style={{ backgroundColor: tip === 20 ? 'rgb(54,158,216)' : 'white',  color: tip === 20 ? 'white' : 'black'}} onClick={e => tipper(20)}>20% - ${(bill *(20/100)).toFixed(2)}</button>
+              <button className="tipBtn" style={{ backgroundColor: tip === 22 ? 'rgb(54,158,216)' : 'white',  color: tip === 22 ? 'white' : 'black'}} onClick={e => tipper(22)}>22% - ${(bill *(22/100)).toFixed(2)}</button>
+              <button className="tipBtn" style={{ backgroundColor: tip === 25 ? 'rgb(54,158,216)' : 'white',  color: tip === 25 ? 'white' : 'black'}} onClick={e => tipper(25)}>25% - ${(bill *(25/100)).toFixed(2)}</button>
             </div>
           </div>
           
